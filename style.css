@@ -1,0 +1,1108 @@
+/* ================================== */
+/*        기본 & 전역 스타일           */
+/* ================================== */
+
+:root {
+  --primary-color: #0064d2;
+  --secondary-color: #00aeff;
+  --text-color: #333;
+  --gray-color: #f5f5f5;
+  --border-color: #e5e5e5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+input[type="date"] {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* ================================== */
+/*          Header & Footer           */
+/* ================================== */
+
+/* --- 헤더 --- */
+header {
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.logo i {
+  margin-right: 8px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-bottom: 18px;
+}
+
+nav a.active {
+  font-weight: 700;
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-btn {
+  border: 1px solid #ccc;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.login-btn:hover {
+  background-color: var(--gray-color);
+  border-color: #bbb;
+}
+
+.search-icon {
+  font-size: 1.3rem;
+}
+
+/* --- 푸터 --- */
+footer {
+  background-color: var(--gray-color);
+  color: #888;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ================================== */
+/*             Modal Styles           */
+/* ================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 450px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+}
+
+.modal-body .airport-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.modal-body .airport-list li {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.modal-body .airport-list li:hover {
+  background-color: var(--gray-color);
+}
+
+
+/* ================================== */
+/*          공통 컴포넌트 스타일         */
+/* ================================== */
+
+/* --- 페이지 공통 레이아웃 (메인 페이지 제외) --- */
+main {
+  flex-grow: 1;
+  background-image: linear-gradient(to right, #e0f2ff, #fde2e2);
+}
+
+.content-main {
+  padding: 50px 0;
+}
+
+/* --- 이미지 오버레이 (메인, 예약) --- */
+.airplane-overlay {
+  padding: 3rem;
+  border-radius: 12px;
+}
+
+/* --- 항공권 검색/예약 폼 (메인, 예약) --- */
+.booking-content {
+  padding-top: 30px;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 150px;
+  gap: 25px;
+  align-items: flex-end;
+}
+
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.airport {
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.airport:hover {
+  background-color: #f0f0f0;
+}
+
+.airport .code {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.airport .name {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.swap-icon {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.swap-icon:hover {
+  transform: rotate(180deg);
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 8px 30px 8px 8px;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-bottom-color: var(--primary-color);
+}
+
+.form-field i {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  color: #888;
+}
+
+.radio-group {
+  padding-top: 5px;
+}
+
+.radio-group div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 2px;
+}
+
+.radio-group label {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--text-color);
+  display: inline;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.search-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #00d0ff;
+}
+
+/* --- 입력 그룹 (로그인, 모달, 결제) --- */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 100, 210, 0.2);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* --- 콘텐츠 패널 타이틀 (마이페이지, 관리자) --- */
+.panel-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* --- 정보 목록 (마이페이지, 관리자) --- */
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  font-size: 1.05rem;
+}
+
+.info-item:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.info-value {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.passport-action {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.info-value.unregistered {
+  color: #888;
+  font-style: italic;
+}
+
+.register-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.register-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* --- 티켓 요약 (마이페이지, 관리자) --- */
+.ticket-summary {
+  text-align: center;
+}
+
+.ticket-route {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ticket-route .fa-plane {
+  font-size: 1.3rem;
+  color: #888;
+  margin: 0 20px;
+}
+
+.ticket-date {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.ticket-details {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.view-more-btn {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.view-more-btn:hover {
+  background-color: #e9e9e9;
+  border-color: #ccc;
+}
+
+
+/* --- 결과 테이블 (예약, 관리자) --- */
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.results-header .panel-title {
+  margin-bottom: 0;
+}
+
+.results-header h2 {
+  margin: 0;
+}
+
+.sort-options button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.sort-options button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.results-table thead {
+  background-color: #f8f9fa;
+}
+
+.results-table th,
+.results-table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.results-table th {
+  font-weight: 600;
+  color: #555;
+}
+
+/* --- 항공편 경로 정보 (결제, 예약/취소 내역) --- */
+.flight-path {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.flight-path .airport {
+  text-align: center;
+}
+
+.flight-path .airport-code {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.flight-path .airport-name {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* --- 상세 정보 (결제, 예약/취소 내역) --- */
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.detail-label {
+  color: #555;
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+/* --- 필터 패널 (예약/취소 내역) --- */
+.filter-panel {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-panel input[type="date"] {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.filter-panel .search-btn {
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  min-width: 100px;
+}
+
+.filter-panel .link-to-cancel {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: underline;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* --- 예약 카드 레이아웃 (예약/취소 내역) --- */
+.reservation-card {
+  padding: 0;
+}
+
+.card-body {
+  padding: 30px 40px;
+}
+
+.card-footer {
+  padding: 15px 40px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 16px 16px;
+}
+
+.booking-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+
+/* ================================== */
+/*          Main Page Styles          */
+/* ================================== */
+
+main.main-page {
+  padding-bottom: 50px;
+}
+
+.airplane {
+  position: relative;
+  height: 80vh;
+  background: url('component/airplane.png') center center / cover no-repeat;
+  background-color: #eaeaea; /* 이미지 로딩 전 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  -webkit-text-stroke: #555;
+  text-align: center;
+}
+
+main.main-page .booking-container {
+  position: relative;
+  margin-top: -80px;
+}
+
+.booking-widget {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 20px 30px 30px 30px;
+}
+
+.widget-tabs {
+  display: flex;
+}
+
+.tab-item {
+  padding: 15px 30px;
+  border-radius: 10px 10px 0 0;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color);
+}
+
+.booking-form input:disabled {
+    background: transparent; /* 배경을 투명하게 (일반 input과 동일하게) */
+    color: var(--text-color);  /* 글자색을 일반 색상으로 */
+    cursor: default;         /* 커서 모양을 기본으로 */
+    
+    /* 브라우저에 따라 추가적인 스타일 초기화가 필요할 수 있음 */
+    -webkit-text-fill-color: var(--text-color); /* 크롬/사파리 글자색 강제 적용 */
+    opacity: 1; /* 투명도 강제 적용 */
+}
+
+.booking-form .form-field input:disabled + i {
+    color: #888;
+}
+
+
+/* ================================== */
+/*        Reservation Page Styles     */
+/* ================================== */
+
+.booking-container {
+  /* 메인 페이지와 속성이 달라 별도 유지 */
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.content-panel {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 30px; /* 패딩 값이 달라 별도 유지 */
+}
+
+.panel-title {
+  /* 다른 페이지와 속성이 달라 별도 유지 */
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin: 0 0 25px 0;
+  padding-left: 10px;
+}
+
+.flight-info {
+  text-align: left;
+}
+
+.flight-info .airline {
+  font-weight: 600;
+}
+
+.flight-info .flight-num {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.time-info {
+  font-weight: 500;
+}
+
+.price-info {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.reserve-flight-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reserve-flight-btn:hover {
+  background-color: #00d0ff;
+}
+
+
+/* ================================== */
+/*        Login Page Styles           */
+/* ================================== */
+
+main.auth-page {
+  /* main 태그에 클래스를 부여하여 다른 페이지와 구분 */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #e0f2ff, #fde2e2);
+  padding: 40px 0;
+}
+
+.login-wrapper {
+  width: 420px;
+  max-width: 90%;
+}
+
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.form-container.active {
+  display: block;
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+
+.form-switcher {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-switcher a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-switcher a:hover {
+  text-decoration: underline;
+}
+
+
+/* ================================== */
+/*         My Page Styles             */
+/* ================================== */
+
+.content-panel {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.content-panel:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+
+/* ================================== */
+/*        Admin Page Styles           */
+/* ================================== */
+
+.content-panel {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.content-panel:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.stats-content-tab {
+  display: none;
+  margin-top: 20px;
+}
+
+.stats-content-tab.active {
+  display: block;
+}
+
+
+/* ================================== */
+/*        Payment Page Styles         */
+/* ================================== */
+
+.content-panel {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
+}
+
+.panel-title {
+  /* 다른 페이지와 속성이 달라 별도 유지 */
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin: 0 0 30px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.flight-duration {
+  text-align: center;
+  color: #777;
+}
+
+.flight-duration .fa-plane {
+  font-size: 1.3rem;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+.flight-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 30px; /* row-gap, column-gap */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 25px;
+}
+
+.detail-value.price {
+  color: var(--primary-color);
+}
+
+.passenger-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 30px;
+}
+
+.input-group { /* passenger-form-grid 내부의 input-group은 margin이 없음 */
+  margin-bottom: 0;
+}
+
+.input-group .radio-buttons {
+  display: flex;
+  gap: 40px;
+  padding-top: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.input-group .radio-buttons label {
+  display: inline-flex;
+  align-items: center;
+  font-weight: normal;
+  margin-bottom: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.input-group .radio-buttons input {
+  margin-right: 10px;
+}
+
+.payment-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.final-price .label {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.final-price .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-left: 15px;
+}
+
+.payment-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.payment-btn:hover {
+  background-color: #e60000;
+}
+
+
+/* ================================== */
+/*   Reserve-History Page Styles      */
+/* ================================== */
+
+.content-panel {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
+}
+
+.flight-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 30px; /* gap이 달라 별도 유지 */
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.cancel-btn.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.cancellation-details {
+  list-style: none;
+  padding: 15px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.cancellation-details li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.refund-amount .detail-value {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.confirm-cancel-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.confirm-cancel-btn:hover {
+  background-color: #c82333;
+}
+
+
+/* ================================== */
+/*    Cancel-History Page Styles      */
+/* ================================== */
+
+.content-panel {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 30px;
+}
+
+.flight-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 30px; /* gap이 달라 별도 유지 */
+}
+
+.card-footer .refund-details {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.card-footer .refund-details .label {
+  color: #777;
+}
+
+.card-footer .refund-details .value {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.card-footer .refund-details .final-refund .value {
+  color: var(--primary-color);
+  font-size: 1.05rem;
+}
