@@ -1,0 +1,11 @@
+# .gitignore
+
+# 민감한 정보가 포함된 설정 파일
+/api/db_connect.php
+
+# Composer vendor 디렉토리
+/vendor/
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
